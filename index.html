@@ -8,13 +8,36 @@
 <body>
     <script>
         // Задание 1
-        let celsiusTemperature = 5;
-        let fahrenheitTemperature = (9/5) * celsiusTemperature + 32;
-        console.log(celsiusTemperature, fahrenheitTemperature);
-        // Задание 2
-        let name = 'Лиза';
-        let admin = name;
-        console.log(admin);
+        let num1 = Number(prompt('Введите переменную'))
+        let num2 = Number(prompt('Введите переменную'))
+       if (num1 === 1 || num1 < 1) {
+        console.log(`переменная ${num1} равна или меньше 1`);
+       }
+       else{
+        console.log(`переменная ${num1} не равна или не меньше 1`);
+       }
+       if (num2 >= 3) {
+        console.log(`Переменная ${num2} больше или равна 3`);
+       }
+       else{
+        console.log(`Переменная ${num2} не больше или не равна 3`);
+       }
+    // Задание 2
+    let test = true;
+    (test === true) ? console.log('+++'):console.log('---');
+    // Задание 3
+    let day = 5
+    if (day >= 1 && day <= 31) {
+        if (day <= 10) {
+            console.log("Первая декада месяца");
+        } else if (day > 10 && day <= 20) {
+            console.log("Вторая декада месяца");
+        } else {
+            console.log("Третья декада месяца");
+        }
+    } else {
+        console.log("Ошибка: день должен быть в диапазоне от 1 до 31");
+    }
     </script>
 </body>
 </html>
