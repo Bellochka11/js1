@@ -6,77 +6,98 @@
     <title>Document</title>
 </head>
 <body>
-    <p class="super_element">Привет</p>
-
-    <img src="https://placeimg.com/50/50/animals" alt="">
-    <img src="https://placeimg.com/50/50/arch" alt="">
-    <img src="https://placeimg.com/50/50/nature" alt="">
-    <img src="https://placeimg.com/50/50/people" alt="">
-    <img src="https://placeimg.com/50/50/tech" alt="">
-    <img src="https://placeimg.com/50/50/tech/grayscale" alt="">
-    <img src="https://placeimg.com/50/50/tech/sepia" alt="">
-
+    <input class="inp1" id="from" type="text">
+    В инпуте написано: <span class="span"></span>
+    
     <br>
-
-    <button>Кнопка</button>
-    <button class="super_element">Кнопка с классом btn</button>
-    <button>Кнопка</button>
-
+    
+    <button class="messageBtn">Показать блок</button>
+    <div class="message">
+      Привет :)
+    </div>
+    
     <br>
+    
+    <form class="form">
+      <label>
+        Первый инпут:
+        <input class="form-control" type="text">
+      </label>
+      <br>
+      <br>
+      <label>
+        Второй инпут:
+        <select class="form-control">
+          <option value=""></option>
+          <option value="1">Один</option>
+          <option value="2">Два</option>
+        </select>
+      </label>
+      <br>
+      <br>
+      <button type="submit">Отправить</button>
+    </form>
+    
+    <script>
+        
+       const inp1 = document.querySelector('.inp1');
+       const span = document.querySelector('.span');
+       const but = document.querySelector('.messageBtn');
+       const message = document.querySelector('.message');
+       const form = document.querySelector('.form');
+       const formControl = document.querySelectorAll('.form-control');
+       const firstInput = document.getElementById('firstInput');
+       const secondInput = document.getElementById('secondInput');
 
-    <textarea class="textarea"></textarea>
+       inp1.addEventListener('input', function (e){
+        const text = inp1.value;
+        span.textContent = text;
+       })
+       but.addEventListener('click', function (e){
+        message.classList.add('animate_animated', 'animate_fadeInLeftBig')
+        message.style.visibility = 'visible';
+       })
+       form.addEventListener('submit', function(event) {
+    let isValid = true;
 
-    <br>
-
-    <ul class="ul">
-    <li class="li">
-        <button class="btn">Кнопка 1</button>
-    </li>
-    <li class="li">
-        <button class="btn">Кнопка 2</button>
-    </li>
-    <li class="li">
-        <button class="btn">Кнопка 3</button>
-    </li>
-    <li class="li">
-        <button class="btn">Кнопка 4</button>
-    </li>
-    </ul>
-
-<script>
-    window.addEventListener('load', function (e) {
-        console.log('все теги прогрузились');
-    })
-    document.addEventListener('click', function(event) {
-    const target = event.target; // Элемент, на который был совершен клик
-    const tagName = target.tagName.toLowerCase(); // Название тега в нижнем регистре
-    const className = 'super_element'; // Имя класса для проверки
-
-    if (target.classList.contains(className)) {
-        console.log(`Класс "${className}" присутствует в элементе "${tagName}".`);
+    // Проверяем первый инпут
+    if (!firstInput.value.trim()) {
+        firstInput.classList.add('error');
+        isValid = false;
     } else {
-        console.log(`Класс "${className}" отсутствует в элементе "${tagName}".`);
+        firstInput.classList.remove('error');
+    }
+
+    // Проверяем второй инпут
+    if (!secondInput.value) {
+        secondInput.classList.add('error');
+        isValid = false;
+    } else {
+        secondInput.classList.remove('error');
+    }
+
+    if (!isValid) {
+        event.preventDefault(); // Отмена отправки формы
     }
 });
-const textarea = document.querySelector('.textarea');
-textarea.addEventListener('mouseover', function (e){
-    console.log('Вы навели на textarea');
 
-})
-const btn = document.querySelectorAll('.btn');
-    btn.forEach(element => {
-        element.addEventListener('click', function (e){
-            console.log(element.textContent);
-        })
-    });
-    const listItems = document.querySelectorAll('.li');
-    listItems.forEach(element, index => {
-        if (index % 2 === 1) {
-            element.style.backgroundColor = 'red'
-        }
-    });
+// Удаление класса error при вводе
+firstInput.addEventListener('input', function() {
+    if (firstInput.value.trim()) {
+        firstInput.classList.remove('error');
+    } else {
+        firstInput.classList.add('error');
+    }
+});
 
-   
-</script>      
+secondInput.addEventListener('change', function() {
+    if (secondInput.value) {
+        secondInput.classList.remove('error');
+    } else {
+        secondInput.classList.add('error');
+    }
+});
+    </script>
+        
 </body>
 </html>
