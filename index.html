@@ -4,42 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="stylee.css">
 </head>
 <body>
-    <style>
-        .content{
-            display: flex;
-            flex-direction: column;
-        }
-        .img{
-            width: 250px;
-            height: 250px;
-            border: 3px solid rgb(11, 243, 61);
-        }
-    </style>
-    <div class="content"></div>
-    <script src="data.js"></script>
+    <content class="div">
+        <div class="div_1">
+            <img class="img" src="product1.jpg" alt="1">
+            <div class="div_text">
+                <h1 class="h1">ELLERY X M'O CAPSULE</h1>
+                <p class="p">Known for her sculptural takes on traditional tailoring, Australian arbiter of cool Kym Ellery teams up with Moda Operandi.</p>
+                <p class="price">$52.00</p>
+            </div>
+        </div>
+    </content>
+    <script src="data_11.js"></script>
     <script>
-        const content = document.querySelector('.content');
-        const parsedData = JSON.parse(data_1);
-        console.log(parsedData);
-        parsedData.forEach(element => {
-            console.log(element.url);
+        const main_div = document.querySelector('.div');
+        
+        const data = JSON.parse(dataProducts);
+        console.log(data);
+        data.forEach(element => {
+            console.log(element);
+            
             const h1 = document.createElement('h1');
-            const p = document.createElement('p');
-            const img = document.createElement('img');
-
-            h1.textContent = element.id;
             h1.classList = 'h1';
-            p.textContent = element.name;
-            p.classList = 'p';
-            img.src = element.url;
-            img.classList = 'img';
+            h1.textContent = element.name;
+            const p_1 = document.createElement('p');
+            p_1.classList = 'p';
+            p_1.textContent = element.p;
+            const p_2 = document.createElement('p');
+            p_2.classList = 'price';
+            p_2.textContent = element.price;
+            const img = document.createElement('img');
+            img.classList = 'img'
+            img.src = element.img
 
-            content.appendChild(h1);
-            content.appendChild(p);
-            content.appendChild(img);
+            const div_text = document.createElement('div');
+            div_text.classList = 'div_text';
+            div_text.appendChild(h1)
+            div_text.appendChild(p_1)
+            div_text.appendChild(p_2)
+
+            const div = document.createElement('div');
+            div.classList = 'div_1';
+            div.appendChild(img);
+            div.appendChild(div_text);
+            
+            
+            main_div.appendChild(div)
+            
+            
         });
+       
 
 
     </script>
